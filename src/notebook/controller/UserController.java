@@ -1,7 +1,6 @@
 package notebook.controller;
 
 import notebook.model.User;
-import notebook.model.dao.impl.FileOperation;
 import notebook.model.repository.GBRepository;
 
 import java.util.List;
@@ -13,6 +12,7 @@ public class UserController {
     public UserController(GBRepository repository) {
         this.repository = repository;
     }
+
 
     public void saveUser(User user) {
         repository.create(user);
@@ -36,5 +36,8 @@ public class UserController {
 
     public List<User> readAll(){
         return repository.findAll();
+    }
+    public void deleteUser(String id){
+        repository.delete(Long.parseLong(id));
     }
 }
